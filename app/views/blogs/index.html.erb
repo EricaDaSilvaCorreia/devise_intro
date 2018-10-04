@@ -19,7 +19,7 @@
       <tr>
         <td><%= blog.title %></td>
         <td><%= blog.body %></td>
-        <td><%= blog.user_id %></td>
+        <td><%= blog.user.fullname %></td>
         <td><%= link_to 'Show', blog %></td>
         <%if user_signed_in? %>
         <% if  current_user.id == blog.user.id  %>
