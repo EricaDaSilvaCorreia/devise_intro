@@ -12,7 +12,9 @@
         </h3>
         <p class="card-text mb-auto"><%= @blog.body %></a>
         </div>
-        <img class="card-img-right flex-auto d-none d-lg-block" src="<%= @blog.image %>" alt="Card image cap">
+
+          <%= image_tag @blog.image, class: 'img-responsive', height: '300px' %>
+
         <div class="card-footer d-flex">
           <% if @blog.user_id == current_user.id  %>
           <%= link_to 'Edit', edit_blog_path(@blog) %>|
