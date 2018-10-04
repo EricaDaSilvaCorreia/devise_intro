@@ -1,45 +1,50 @@
 
-      <header class="blog-header py-3">
-        <div class="row flex-nowrap justify-content-between align-items-center">
-          <div class="col-4 pt-1">
-            <a class="text-muted" href="#">Say Hello</a>
-          </div>
-          <div class="col-4 text-center">
-            <a class="blog-header-logo text-dark" href="#">HEY BLOG HEY</a>
-          </div>
-          <div class="col-4 d-flex justify-content-end align-items-center">
-            <% if user_signed_in?  %>
-            <div class="btn btn-sm btn-outline-secondary">
-              <%= link_to 'EDIT PROFILE', edit_user_registration_path, class: 'nav-link'  %>
-            </div>
-            <div class="btn btn-sm btn-outline-secondary">
-              <%= link_to 'SIGN OUT', destroy_user_session_path, method: :delete, class: 'nav-link'  %>
-            </div>
-            <% else %>
-            <div class="btn btn-sm btn-outline-secondary">
-              <%= link_to 'JOIN US', new_user_registration_path, class: 'nav-link'  %>
-            </div>
-            <div class="btn btn-sm btn-outline-secondary">
-              <%= link_to 'SIGN IN', new_user_session_path, class: 'nav-link'  %>
-            </div>
-            <% end %>
-          </div>
-        </div>
-      </header>
-
-      <div class="nav-scroller py-1 mb-2">
-        <nav class="nav d-flex justify-content-between">
-          <a class="p-2 text-muted" href="#">Hey</a>
-          <a class="p-2 text-muted" href="#">You</a>
-          <a class="p-2 text-muted" href="#">Yes</a>
-          <a class="p-2 text-muted" href="#">PSST</a>
-          <a class="p-2 text-muted" href="#">You</a>
-          <a class="p-2 text-muted" href="#">Yes</a>
-          <a class="p-2 text-muted" href="#">Hey</a>
-          <a class="p-2 text-muted" href="#">Hey</a>
-          <a class="p-2 text-muted" href="#">HEY</a>
-          <a class="p-2 text-muted" href="#">YES</a>
-          <a class="p-2 text-muted" href="#">YOU</a>
-          <a class="p-2 text-muted" href="#">Hi</a>
-        </nav>
+<div class="container">
+  <header class="blog-header py-3">
+    <div class="row flex-nowrap justify-content-between align-items-center">
+      <div class="col-4 pt-1">
+        <a class="text-muted" href="#">Say Hello</a>
       </div>
+      <div class="col-4 text-center">
+        <%= link_to 'HEY BLOG HEY', root_path, class: 'navbar-brand' %>
+      </div>
+      <div class="col-4 d-flex justify-content-end align-items-center">
+        <% if user_signed_in?  %>
+        <div class="btn btn-sm btn-outline-secondary">
+          <%= link_to 'EDIT PROFILE', edit_user_registration_path, class: 'nav-link'  %>
+        </div>
+        <div class="btn btn-sm btn-outline-secondary">
+          <%= link_to 'SIGN OUT', destroy_user_session_path, method: :delete, class: 'nav-link'  %>
+        </div>
+        <% else %>
+        <div class="btn btn-sm btn-outline-secondary">
+          <%= link_to 'JOIN US', new_user_registration_path, class: 'nav-link'  %>
+        </div>
+        <div class="btn btn-sm btn-outline-secondary">
+          <%= link_to 'SIGN IN', new_user_session_path, class: 'nav-link'  %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </header>
+</div>
+
+<div class="nav-scroller py-1 mb-2">
+  <nav class="nav d-flex justify-content-between">
+    <%= link_to 'Blogs', blogs_path, class: 'nav-link' %>
+    <% if user_signed_in? %>
+    <%= link_to 'New Blogs', new_blog_path, class: 'nav-link' %>
+    <% end %>
+    <a class="p-2 text-muted" href="#">You</a>
+    <a class="p-2 text-muted" href="#">Yes</a>
+    <a class="p-2 text-muted" href="#">PSST</a>
+    <a class="p-2 text-muted" href="#">You</a>
+    <a class="p-2 text-muted" href="#">Yes</a>
+    <a class="p-2 text-muted" href="#">Hey</a>
+    <a class="p-2 text-muted" href="#">Hey</a>
+    <a class="p-2 text-muted" href="#">HEY</a>
+    <a class="p-2 text-muted" href="#">YES</a>
+    <a class="p-2 text-muted" href="#">YOU</a>
+    <a class="p-2 text-muted" href="#">Hi</a>
+  </nav>
+</div>
