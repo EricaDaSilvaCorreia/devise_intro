@@ -10,21 +10,44 @@
         <h3 class="mb-0">
           <%= @blog.title %>
         </h3>
-        </div>
-
-        <% if @blog.image %>
-          <%= image_tag @blog.image, class: 'img-responsive', height: '300px' %>
-        <% end %>
-
-        <div class="card-footer d-flex">
-          <% if @blog.user_id == current_user.id  %>
-          <%= link_to 'Edit', edit_blog_path(@blog) %>|
-          <%= link_to 'Delete', @blog, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
-        </div>
       </div>
-      <p>
-        <%= @blog.body %>
-      </p>
+
+      <% if @blog.image %>
+      <%= image_tag @blog.image, class: 'img-responsive', height: '300px' %>
+      <% end %>
+
+      <div class="card-footer d-flex">
+        <% if @blog.user_id == current_user.id  %>
+        <%= link_to 'Edit', edit_blog_path(@blog) %>|
+        <%= link_to 'Delete', @blog, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </div>
+    </div>
+    <p>
+      <%= @blog.body %>
+    </p>
+
+    <div class="container">
+      <ul class="list-group">
+        <% @blog.comments.each do |comment| %>
+        <li class="list-group-item">
+          <%= link_to comment.body, edit_blog_comment_path(@blog, comment) %>
+          <br>
+          <br>
+          <%if user_signed_in? %>
+          <% if  current_user.id ==
+          comment.user.id  %>
+          <small><%= link_to 'Edit Comment', edit_blog_comment_path(@blog,comment)%></small> |
+          <small><%= link_to 'Delete Comment', blog_comment_url(@blog, comment), method: :delete, data: { confirm: 'Are you sure?' } %></small>
+          <% end %>
+          <% end %>
+        </li>
+        <% end %>
+      </ul>
+
+      <br>
+      <%= link_to 'New Comment', new_blog_comment_path(@blog) %>
+
     </div>
   </div>
+</div>
