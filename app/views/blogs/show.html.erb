@@ -1,24 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @blog.title %>
-</p>
+<div class="container">
 
-<p>
-  <strong>Body:</strong>
-  <%= @blog.body %>
-</p>
-
-<p>
-  <strong>Image:</strong>
-  <%= @blog.image %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @blog.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_blog_path(@blog) %> |
-<%= link_to 'Back', blogs_path %>
+  <div class="col-md-6">
+    <%= link_to 'Back', blogs_path, class: 'btn btn-primary my-4' %>
+    <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+      <div class="card-body d-flex flex-column align-items-start">
+        <strong class="d-inline-block mb-2 text-primary">Important Stuff</strong>
+        <h3 class="mb-0">
+          <%= @blog.title %>
+        </h3>
+        <p class="card-text mb-auto"><%= @blog.body %></a>
+        </div>
+        <img class="card-img-right flex-auto d-none d-lg-block" src="<%= @blog.image %>" alt="Card image cap">
+        <div class="card-footer d-flex">
+          <% if @blog.user_id == current_user.id  %>
+          <%= link_to 'Edit', edit_blog_path(@blog) %>|
+          <%= link_to 'Delete', @blog, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </div>
+      </div>
+      <p>
+        <%= @blog.body %>
+      </p>
+    </div>
+  </div>
