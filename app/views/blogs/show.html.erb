@@ -10,10 +10,11 @@
         <h3 class="mb-0">
           <%= @blog.title %>
         </h3>
-        <p class="card-text mb-auto"><%= @blog.body %></a>
         </div>
 
+        <% if @blog.image %>
           <%= image_tag @blog.image, class: 'img-responsive', height: '300px' %>
+        <% end %>
 
         <div class="card-footer d-flex">
           <% if @blog.user_id == current_user.id  %>
