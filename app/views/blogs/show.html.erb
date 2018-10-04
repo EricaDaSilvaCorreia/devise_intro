@@ -19,7 +19,7 @@
       <div class="card-footer d-flex">
         <% if @blog.user_id == current_user.id  %>
         <%= link_to 'Edit', edit_blog_path(@blog) %>|
-        <%= link_to 'Delete', @blog, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to 'Delete', blog_url(@blog), method: :delete, data: { confirm: 'Are you sure?' } %>
         <% end %>
       </div>
     </div>
@@ -31,7 +31,10 @@
       <ul class="list-group">
         <% @blog.comments.each do |comment| %>
         <li class="list-group-item">
-          <%= link_to comment.body, edit_blog_comment_path(@blog, comment) %>
+          <%= link_to user_url(comment.user_id, comment) do %>
+        <h5><%= comment.user.fullname%></h5>
+        <% end %>
+          <%= comment.body %>
           <br>
           <br>
           <%if user_signed_in? %>

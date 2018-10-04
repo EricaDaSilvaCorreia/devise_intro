@@ -23,6 +23,7 @@ class CommentsController < ApplicationController
   # GET /comments/1/edit
   def edit
     @blog = Blog.find(params[:blog_id])
+    session[:return_to] ||= request.referer
   end
 
   # POST /comments
@@ -32,7 +33,7 @@ class CommentsController < ApplicationController
     @blog = Blog.find(params[:blog_id])
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @blog, notice: 'Comment was successfully created.' }
+        format.html { redirect_to session.delete(:return_to), notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
