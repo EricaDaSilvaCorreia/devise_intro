@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'static#landing'
   devise_for :users
 
-  resources 'blogs'
+  # resources 'blogs'
   resources :blogs do
     resources :comments
   end
